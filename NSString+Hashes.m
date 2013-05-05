@@ -1,6 +1,5 @@
 //
 //  NSString+Hashes.m
-//  LIFTUPP
 //
 //  Created by Klaus-Peter Dudas on 26/07/2011.
 //  Copyright: Do whatever you want with this, i.e. Public Domain
@@ -17,7 +16,7 @@
     NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
     uint8_t digest[CC_MD5_DIGEST_LENGTH];
 
-    CC_MD5(data.bytes, data.length, digest);
+    CC_MD5(data.bytes, (CC_LONG)data.length, digest);
     
     NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
     
@@ -34,7 +33,7 @@
     NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
     uint8_t digest[CC_SHA1_DIGEST_LENGTH];
     
-    CC_SHA1(data.bytes, data.length, digest);
+    CC_SHA1(data.bytes, (CC_LONG)data.length, digest);
     
     NSMutableString *output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
     
@@ -51,7 +50,7 @@
     NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
     uint8_t digest[CC_SHA256_DIGEST_LENGTH];
     
-    CC_SHA256(data.bytes, data.length, digest);
+    CC_SHA256(data.bytes, (CC_LONG)data.length, digest);
     
     NSMutableString *output = [NSMutableString stringWithCapacity:CC_SHA256_DIGEST_LENGTH * 2];
     
@@ -68,7 +67,7 @@
     NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
     uint8_t digest[CC_SHA512_DIGEST_LENGTH];
     
-    CC_SHA512(data.bytes, data.length, digest);
+    CC_SHA512(data.bytes, (CC_LONG)data.length, digest);
     
     NSMutableString *output = [NSMutableString stringWithCapacity:CC_SHA512_DIGEST_LENGTH * 2];
     
