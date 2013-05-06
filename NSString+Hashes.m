@@ -38,11 +38,20 @@ static inline NSString *NSStringCCHashFunction(unsigned char *(function)(const v
     return NSStringCCHashFunction(CC_SHA1, CC_SHA1_DIGEST_LENGTH, self);
 }
 
+- (NSString *)sha224
+{
+    return NSStringCCHashFunction(CC_SHA224, CC_SHA224_DIGEST_LENGTH, self);
+}
+
 - (NSString *)sha256
 {
     return NSStringCCHashFunction(CC_SHA256, CC_SHA256_DIGEST_LENGTH, self);
 }
 
+- (NSString *)sha384
+{
+    return NSStringCCHashFunction(CC_SHA384, CC_SHA384_DIGEST_LENGTH, self);
+}
 - (NSString *)sha512
 {
     return NSStringCCHashFunction(CC_SHA512, CC_SHA512_DIGEST_LENGTH, self);
