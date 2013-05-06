@@ -9,74 +9,43 @@
 
 #import "NSString+Hashes.h"
 
+static inline NSString *NSStringCCHashFunction(unsigned char *(function)(const void *data, CC_LONG len, unsigned char *md), CC_LONG digestLength, NSString *string)
+{
+    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+    uint8_t digest[digestLength];
+    
+    function(data.bytes, (CC_LONG)data.length, digest);
+    
+    NSMutableString *output = [NSMutableString stringWithCapacity:digestLength * 2];
+    
+    for (int i = 0; i < digestLength; i++)
+    {
+        [output appendFormat:@"%02x", digest[i]];
+    }
+    
+    return output;
+}
+                             
 @implementation NSString (Hashes)
 
 - (NSString *)md5
 {
-    NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
-    uint8_t digest[CC_MD5_DIGEST_LENGTH];
-
-    CC_MD5(data.bytes, (CC_LONG)data.length, digest);
-    
-    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
-    
-    for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
-    {
-        [output appendFormat:@"%02x", digest[i]];
-    }
-    
-    return output;
+    return NSStringCCHashFunction(CC_MD5, CC_MD5_DIGEST_LENGTH, self);
 }
 
 - (NSString *)sha1
 {
-    NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
-    uint8_t digest[CC_SHA1_DIGEST_LENGTH];
-    
-    CC_SHA1(data.bytes, (CC_LONG)data.length, digest);
-    
-    NSMutableString *output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
-    
-    for (int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++)
-    {
-        [output appendFormat:@"%02x", digest[i]];
-    }
-    
-    return output;
+    return NSStringCCHashFunction(CC_SHA1, CC_SHA1_DIGEST_LENGTH, self);
 }
 
 - (NSString *)sha256
 {
-    NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
-    uint8_t digest[CC_SHA256_DIGEST_LENGTH];
-    
-    CC_SHA256(data.bytes, (CC_LONG)data.length, digest);
-    
-    NSMutableString *output = [NSMutableString stringWithCapacity:CC_SHA256_DIGEST_LENGTH * 2];
-    
-    for (int i = 0; i < CC_SHA256_DIGEST_LENGTH; i++)
-    {
-        [output appendFormat:@"%02x", digest[i]];
-    }
-    
-    return output;
+    return NSStringCCHashFunction(CC_SHA256, CC_SHA256_DIGEST_LENGTH, self);
 }
 
 - (NSString *)sha512
 {
-    NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
-    uint8_t digest[CC_SHA512_DIGEST_LENGTH];
-    
-    CC_SHA512(data.bytes, (CC_LONG)data.length, digest);
-    
-    NSMutableString *output = [NSMutableString stringWithCapacity:CC_SHA512_DIGEST_LENGTH * 2];
-    
-    for (int i = 0; i < CC_SHA512_DIGEST_LENGTH; i++)
-    {
-        [output appendFormat:@"%02x", digest[i]];
-    }
-    
-    return output;
+    return NSStringCCHashFunction(CC_SHA512, CC_SHA512_DIGEST_LENGTH, self);
 }
 
 @end
