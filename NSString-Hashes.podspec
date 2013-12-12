@@ -14,7 +14,8 @@ Pod::Spec.new do |s|
       :tag => "1.1.0"
   }
   
-  s.platform     = :ios, '5.0'
+  s.ios.deployment_target = '5.0'
+  s.osx.deployment_target = '10.8'
   
   s.source_files = 'NSString+Hashes.{h,m}'
   s.exclude_files = 'Classes/Exclude'
