@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   
   s.name         = "NSString-Hashes"
-  s.version      = "1.1.0"
+  s.version      = "1.1.1"
   s.summary      = "Simple Category of NSString that allows for easy MD5, SHA1 and SHA2 hashing."
   s.homepage     = "https://github.com/hypercrypt/NSString-Hashes"
   
@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   
   s.source       = {
       :git => "https://github.com/hypercrypt/NSString-Hashes.git",
-      :tag => "1.1.0"
+      :tag => "1.1.1"
   }
   
   s.ios.deployment_target = '5.0'
