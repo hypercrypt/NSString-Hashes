@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   
   s.source       = {
       :git => "https://github.com/hypercrypt/NSString-Hashes.git",
-      :tag => "1.1.1"
+      :tag => "#{s.version}"
   }
   
   s.ios.deployment_target = '5.0'
