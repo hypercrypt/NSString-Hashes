@@ -17,9 +17,12 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '5.0'
   s.osx.deployment_target = '10.8'
   
-  s.source_files = 'NSString+Hashes.{h,m}'
-  s.exclude_files = 'Classes/Exclude'
+  s.source_files = '[^Tests]*.{h,m}'
+  s.public_header_files = 'NSString+Hashes.h', 'NSData+Hashes.h'
   
   s.requires_arc = true
   
+  s.test_spec do |ts|
+    ts.source_files = 'Tests.m'
+  end
 end

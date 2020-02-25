@@ -1,7 +1,7 @@
 //
-//  NSString+Hashes.h
+//  NSData+Hashes.h
 //
-//  Created by Klaus-Peter Dudas on 26/07/2011.
+//  Created by anivaros on 24.02.2020.
 //  Copyright: Do whatever you want with this, i.e. Public Domain
 //
 
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSString (Hashes)
+@interface NSData (Hashes)
 
 @property (nonatomic, readonly) NSString *md5;
 @property (nonatomic, readonly) NSString *sha1;
@@ -17,6 +17,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSString *sha256;
 @property (nonatomic, readonly) NSString *sha384;
 @property (nonatomic, readonly) NSString *sha512;
+
+@property (nonatomic, readonly) NSData *md5Data;
+@property (nonatomic, readonly) NSData *sha1Data;
+@property (nonatomic, readonly) NSData *sha224Data;
+@property (nonatomic, readonly) NSData *sha256Data;
+@property (nonatomic, readonly) NSData *sha384Data;
+@property (nonatomic, readonly) NSData *sha512Data;
 
 @end
 
